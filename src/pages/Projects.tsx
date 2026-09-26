@@ -9,21 +9,9 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "LeetCode Look-Alike",
-    date: "2024",
-    excerpt: "A high-performance coding platform optimized for real-time challenge resolution. Engineered with a Spring Boot and Docker backend, the system delivers sub-2 second response times and a seamless user experience.",
-    link: "",
-  },
-  {
-    title: "Autozone Management System",
-    date: "2024",
-    excerpt: "An automated inventory and e-commerce ecosystem designed for scale. Leveraging ReactJS and AWS, the platform streamlines parts procurement and inventory tracking through a robust, cloud-native architecture.",
-    link: "",
-  },
-  {
-    title: "Scalable URL Shortener",
-    date: "2024",
-    excerpt: "A secure, high-concurrency URL management service featuring JWT-based authentication and unique ID generation. Built with Go and MongoDB to ensure rapid redirection and data integrity.",
+    title: "Enterprise Multi-Site Network Redesign & Cloud Integration",
+    date: "2025",
+    excerpt: "Architected and implemented a scalable hybrid network infrastructure across on-premises and AWS cloud environments, supporting 10,000+ daily active connections through secure BGP/OSPF routing, AWS Transit Gateway, and Direct Connect integration, reducing hybrid cloud latency by 25%. Optimized enterprise network performance and availability by implementing automated failover, QoS, and route optimization strategies, resulting in a 35% improvement in application availability, faster end-user response times, and reduced peak-time network congestion. Enhanced network operations and observability using NetFlow, SNMP, and Splunk-based monitoring pipelines while automating network runbooks, reducing manual network change efforts by 50% and improving operational uptime and compliance reporting.",
     link: "",
   }];
 
@@ -35,7 +23,7 @@ export default function Projects() {
         Projects
       </h1>
       <p className="text-lg uppercase tracking-wider opacity-60 mb-12">
-        Scalable Systems & Full Stack Solutions
+        Enterprise Networking & Hybrid Cloud Solutions
       </p>
 
       <div className="space-y-8">
@@ -71,14 +59,14 @@ export default function Projects() {
 
       <div className="mt-16 p-8 border-2 border-bright-purple bg-bright-purple/5">
         <h2 className="blocky-text text-2xl md:text-3xl mb-6">
-          Philosophy: Design Meets Performance
+          Philosophy: Reliability by Design
         </h2>
         <div className="space-y-4 text-lg leading-relaxed max-w-3xl">
           <p>
-            I believe that robust engineering is the foundation of exceptional user experience. My approach combines clean, scalable backend architecture with intuitive, responsive frontend design. 
+            I believe that a resilient network is the foundation of any modern enterprise. My approach focuses on building highly available, secure, and observable infrastructure that seamlessly bridges physical data centers with cloud environments.
           </p>
           <p>
-            From migrating monolithic systems to IFM platforms to optimizing graph database retrievals, my focus is always on delivering high-impact solutions that solve real-world problems efficiently.
+            By combining disciplined change management with proactive automation and deep protocol knowledge, I ensure that mission-critical systems remain performant, scalable, and secure under any load.
           </p>
         </div>
       </div>
