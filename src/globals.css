@@ -1,0 +1,333 @@
+/* Tailwind directives - must be at top level */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables - scoped to funky portfolio wrapper */
+.funky-portfolio-wrapper {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --lime-green: #cef565;
+  --purple: #6600CC;
+  --dark-purple: #6600CC;
+}
+
+.funky-portfolio-wrapper.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+/* Funky Portfolio Wrapper - Isolation Container */
+.funky-portfolio-wrapper {
+  isolation: isolate;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  contain: layout style paint;
+  /* Reset any global styles */
+  all: initial;
+  display: block;
+  scroll-behavior: smooth;
+}
+
+/* Reset styles within funky portfolio wrapper */
+.funky-portfolio-wrapper * {
+  box-sizing: border-box;
+}
+
+/* Body styles when funky portfolio is active */
+body.funky-portfolio-active {
+  color: var(--foreground, #0a0a0a);
+  background: var(--lime-green, #cef565);
+  font-family: var(--font-inter, 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Grain/Noise texture overlay - scoped to funky portfolio */
+body.funky-portfolio-active::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9996;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.funky-portfolio-wrapper.dark body.funky-portfolio-active::before {
+  opacity: 0.05;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar - hidden but scrollable - scoped to funky portfolio */
+body.funky-portfolio-active ::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+body.funky-portfolio-active ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.funky-portfolio-active ::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Firefox - hide scrollbar - scoped */
+body.funky-portfolio-active * {
+  scrollbar-width: none;
+}
+
+/* Ensure scrolling still works */
+body.funky-portfolio-active {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+/* Enhanced focus styles for accessibility - scoped */
+.funky-portfolio-wrapper *:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .funky-portfolio-wrapper {
+    scroll-behavior: auto;
+  }
+
+  .funky-portfolio-wrapper *,
+  .funky-portfolio-wrapper *::before,
+  .funky-portfolio-wrapper *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced selection styles - scoped */
+.funky-portfolio-wrapper ::selection {
+  background: var(--purple, #6600CC);
+  color: var(--lime-green, #cef565);
+}
+
+/* Funky Portfolio Body Styles */
+body.funky-portfolio {
+  background: var(--lime-green, #cef565);
+  color: var(--purple, #6600CC);
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Purple text effect */
+.funky-portfolio-wrapper .neon-text {
+  color: var(--purple, #6600CC);
+  text-shadow:
+    2px 2px 0px rgba(102, 0, 204, 0.3);
+}
+
+.funky-portfolio-wrapper .neon-text-lg {
+  color: var(--purple, #6600CC);
+  text-shadow:
+    3px 3px 0px rgba(102, 0, 204, 0.4);
+}
+
+/* 3D blocky text effect */
+.funky-portfolio-wrapper .blocky-text {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--purple, #6600CC);
+  text-shadow:
+    1.5px 1.5px 0px #ffffff,
+    3px 3px 0px rgba(102, 0, 204, 0.3);
+  font-weight: 900;
+  line-height: 1.15;
+  -webkit-text-stroke: 0.5px rgba(102, 0, 204, 0.1);
+  word-spacing: 0.1em;
+}
+
+/* Specific adjustment for long headings to ensure clarity */
+.funky-portfolio-wrapper h2.blocky-text {
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+/* Border frame effect */
+.funky-portfolio-wrapper .frame-border {
+  border: 4px solid var(--purple, #6600CC);
+  box-shadow:
+    inset 0 0 20px rgba(102, 0, 204, 0.2),
+    0 0 20px rgba(102, 0, 204, 0.3);
+}
+
+/* Neon link hover effect */
+.funky-portfolio-wrapper .neon-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.funky-portfolio-wrapper .neon-link:hover {
+  color: var(--purple, #6600CC);
+  transform: translateY(-2px);
+}
+
+.funky-portfolio-wrapper .neon-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--purple, #6600CC);
+  transition: width 0.3s ease;
+}
+
+.funky-portfolio-wrapper .neon-link:hover::after {
+  width: 100%;
+}
+
+/* Remove underline from icon links */
+.funky-portfolio-wrapper .neon-link.no-underline::after {
+  display: none;
+}
+
+/* Button styles */
+.funky-portfolio-wrapper .neon-button {
+  background: var(--purple, #6600CC);
+  border: 3px solid var(--purple, #6600CC);
+  color: var(--lime-green, #cef565);
+  padding: 12px 24px;
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 900;
+  box-shadow:
+    4px 4px 0px rgba(102, 0, 204, 0.3);
+}
+
+.funky-portfolio-wrapper .neon-button:hover {
+  background: var(--purple, #6600CC);
+  border-color: var(--purple, #6600CC);
+  transform: translate(-2px, -2px);
+  box-shadow:
+    6px 6px 0px rgba(102, 0, 204, 0.4);
+}
+
+/* Animation utilities */
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes glow-pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(102, 0, 204, 0.2);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.01);
+    box-shadow: 0 0 35px rgba(102, 0, 204, 0.4);
+  }
+}
+
+.funky-portfolio-wrapper .glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.funky-portfolio-wrapper .glow-pulse-slow {
+  animation: glow-pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes rotate-left-right {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(12deg);
+  }
+}
+
+.funky-portfolio-wrapper .about-label-rotate {
+  transition: transform 0.3s ease;
+}
+
+.funky-portfolio-wrapper .group:hover .about-label-rotate {
+  animation: rotate-left-right 0.6s ease-in-out infinite;
+}
+
+.funky-portfolio-wrapper .scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(102, 0, 204, 0.3), transparent);
+  pointer-events: none;
+  z-index: 1000;
+  animation: scan-line 3s linear infinite;
+  opacity: 0.2;
+}
+
+/* Grid pattern overlay - scoped to funky portfolio */
+body.funky-portfolio-active::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(102, 0, 204, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102, 0, 204, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main content wrapper */
+.funky-portfolio-wrapper .main-content {
+  position: relative;
+  z-index: 2;
+}
